@@ -88,8 +88,8 @@ class App extends Component {
 
     return (
         <div className="app">
-          <Header title={"Real Time System Load"} url="/"/>
-          <Main cpuLoadData={cpuLoadData} cpuLoad={cpuLoad} lineColors={lineColors} url="/"/>
+          <Header title={"Real Time System Load"} url="https://github.com/eyao06/RealtimeSystemLoad"/>
+          <Main cpuLoadData={cpuLoadData} cpuLoad={cpuLoad} lineColors={lineColors} url="https://github.com/eyao06/RealtimeSystemLoad"/>
         </div>
     );
   }
