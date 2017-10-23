@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
 import Header from './components/Header';
+import Main from './components/Main';
 
 import './App.css';
 
@@ -11,6 +12,7 @@ class App extends Component {
       cpuLoad: {},
       endpoint: "http://127.0.0.1:4001",
       cpuLoadData: [],
+      lineColors: {}
 
     };
 
@@ -40,20 +42,54 @@ class App extends Component {
 
       this.setState({cpuLoad: data.cpuLoad});
       
+      this.getColors(Object.keys(this.state.cpuLoad).length-2);
+      
     })
 
+  }
+
+  //get colors for each line on graph
+  getColors(num){
+    let count = this.state.lineColors.length
+
+    if (count >= num || count < 0) {
+      return;
+    } else {
+      this.generateRandomColors(num);
+    }
+  }
+
+  //randomly generate colors for each line on graph
+  generateRandomColors(num){
+
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    let arrOfColors = [];
+
+    for (var i = 0; i <= num; i++){
+      for (var j = 0; j < 6; j++){
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+
+      arrOfColors.push(color);
+      color = '#';
+    }
+
+    this.setState({lineColors: arrOfColors});
   }
 
   render() {
 
     const { cpuLoad, 
             cpuLoadData,
+            lineColors
           } = this.state;
           
 
     return (
         <div className="app">
           <Header title={"Real Time System Load"} url="/"/>
+          <Main cpuLoadData={cpuLoadData} cpuLoad={cpuLoad} lineColors={lineColors} url="/"/>
         </div>
     );
   }
