@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
+import Header from './components/Header';
 
 import './App.css';
 
@@ -52,6 +53,7 @@ class App extends Component {
 
     return (
         <div className="app">
+          <Header title={"Real Time System Load"} url="/"/>
         </div>
     );
   }
