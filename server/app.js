@@ -19,6 +19,7 @@
     
     // start our server
     const server = http.createServer(app); 
+    
     //include socket for real time data transfer
     const io = socketIo(server);
 
