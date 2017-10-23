@@ -1,19 +1,58 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import socketIOClient from "socket.io-client";
+
 import './App.css';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      cpuLoad: {},
+      endpoint: "http://127.0.0.1:4001",
+      cpuLoadData: [],
+
+    };
+
+  }
+
+  componentDidMount() {
+    const { endpoint } = this.state;
+
+    // configure socket on client side
+    const socket = socketIOClient(endpoint);
+    socket.on("FromAPI", data => {
+
+      if (this.state.cpuLoadData === undefined){
+        this.setState({ cpuLoadData: this.state.cpuLoad});
+      }
+      else if (this.state.cpuLoadData.length <= 4){
+        let array = this.state.cpuLoadData;
+        array.push(this.state.cpuLoad);
+        this.setState({ cpuLoadData: array });
+      } 
+      else {
+        let array = this.state.cpuLoadData;
+        array.shift();
+        array.push(this.state.cpuLoad);
+        this.setState({ cpuLoadData: array });
+      }
+
+      this.setState({cpuLoad: data.cpuLoad});
+      
+    })
+
+  }
+
   render() {
+
+    const { cpuLoad, 
+            cpuLoadData,
+          } = this.state;
+          
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+        <div className="app">
+        </div>
     );
   }
 }
