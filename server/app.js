@@ -13,13 +13,12 @@
     const startLoad = require('./libs/cpuLoad')();
     let totalTicks;
     let totalIdles;
-    let totalAvgCPULoad;
     let dateTime;
     let time;
     
     // start our server
     const server = http.createServer(app); 
-    
+
     //include socket for real time data transfer
     const io = socketIo(server);
 
@@ -32,6 +31,7 @@
     });
 
     const getApiAndEmit = async socket => {
+
         try {
 
             //gets date and time of calculation
