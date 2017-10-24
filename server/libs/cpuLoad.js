@@ -1,5 +1,6 @@
 const os = require('os')
 
+//returns calculated average idle and non idle usage per cpu core
 function cpuLoadPerCore() {
   const cpus = os.cpus()
 
