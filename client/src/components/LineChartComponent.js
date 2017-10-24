@@ -36,7 +36,7 @@ class LineChartComponent extends Component {
   	render() {
 
   		const { data, coreCount, colors } = this.props;
-  		const { opacity, startYAxisRange, endYAxisRange, icon } = this.state;
+  		const { opacity, icon } = this.state;
 
     	return (
 
