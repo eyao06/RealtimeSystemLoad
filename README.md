@@ -13,7 +13,7 @@ $ git clone https://github.com/eyao06/RealtimeSystemLoad.git
 $ cd RealtimeSystemLoad
 ```
 
-**Important**: You must install [Node](https://nodejs.org/en/) and [git](https://git-scm.com/downloads) first
+**Important**: You must install the latest version of [Node](https://nodejs.org/en/) and [git](https://git-scm.com/downloads) first
 
 2) Open two terminal and `cd` into subfolder `client` and `server`
 
