@@ -18,20 +18,20 @@ $ cd RealtimeSystemLoad
 2) Open two terminal and `cd` into subfolder `client` and `server`
 
 ```bash
-cd client
-cd server
+$ cd client
+$ cd server
 ```
 
 3) Install the dependencies in each folder
 
 ```bash
-npm install
+$ npm install
 ```
 
 4) Launch server (the server terminal)
 
 ```bash
-node app.js
+$ node app.js
 ```
 
 > Server starts at port 4001
@@ -39,7 +39,7 @@ node app.js
 5) Launch application (the client terminal)
 
 ```bash
-npm start
+$ npm start
 ```
 
 > Now a new browser window/tab will open to http://localhost:3000/
